@@ -152,7 +152,19 @@ def load(
 
     if pretrained_path is not None:
         checkpoint = torch.load(pretrained_path, map_location="cpu")
-        generator.load_state_dict(checkpoint["state_dict"], strict=False)
+        state_dict = checkpoint["state_dict"]
+        model_state = generator.state_dict()
+
+        filtered_state_dict = {
+            k: v for k, v in state_dict.items()
+            if k in model_state and v.shape == model_state[k].shape
+        }
+        generator.load_state_dict(filtered_state_dict, strict=False)
+
+        for k in state_dict:
+            if k not in filtered_state_dict:
+                tracker.print(f"Skipping incompatible or missing key: {k}, shape={state_dict[k].shape}")
+
 
     tracker.print(generator)
     tracker.print(discriminator)
