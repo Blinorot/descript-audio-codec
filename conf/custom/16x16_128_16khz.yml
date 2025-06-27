@@ -1,6 +1,6 @@
 $include:
   - conf/final/16khz.yml
-  - conf/1gpu.yml
+  - conf/1gpu_small.yml
 
 # Quantization
 DAC.n_codebooks: 16
