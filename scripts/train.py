@@ -135,9 +135,6 @@ def load(
     generator, g_extra = None, {}
     discriminator, d_extra = None, {}
 
-    if pretrained_path is not None:
-        generator = DAC.load(pretrained_path, strict=False)
-
     if resume:
         kwargs = {
             "folder": f"{save_path}/{tag}",
@@ -152,6 +149,10 @@ def load(
 
     generator = DAC() if generator is None else generator
     discriminator = Discriminator() if discriminator is None else discriminator
+
+    if pretrained_path is not None:
+        checkpoint = torch.load(pretrained_path, map_location="cpu")
+        generator.load_state_dict(checkpoint["state_dict"], strict=False)
 
     tracker.print(generator)
     tracker.print(discriminator)
