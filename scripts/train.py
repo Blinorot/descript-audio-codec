@@ -130,9 +130,13 @@ def load(
     resume: bool = False,
     tag: str = "latest",
     load_weights: bool = False,
+    pretrained_path: str = None,
 ):
     generator, g_extra = None, {}
     discriminator, d_extra = None, {}
+
+    if pretrained_path is not None:
+        generator = DAC.load(pretrained_path, strict=False)
 
     if resume:
         kwargs = {
