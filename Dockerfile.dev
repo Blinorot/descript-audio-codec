@@ -11,3 +11,12 @@ RUN apt update && apt install -y git
 
 # install the package
 RUN pip install --upgrade -r /requirements.txt
+
+# Copy entire source tree
+COPY . /u/home/src
+
+# Set working directory where setup.py or pyproject.toml lives
+WORKDIR /u/home/src
+
+# Install DAC as editable package
+RUN pip install -e ".[dev]"
