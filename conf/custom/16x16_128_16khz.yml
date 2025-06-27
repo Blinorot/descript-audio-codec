@@ -8,16 +8,16 @@ DAC.codebook_size: 256
 
 train/build_dataset.folders:
   speech_libri:
-    - /scratch/datasets/LibriSpeech/train-clean-360
-    - /scratch/datasets/LibriSpeech/train-clean-100
-    - /scratch/datasets/LibriSpeech/train-other-500
+    - /data/LibriSpeech/train-clean-360
+    - /data/LibriSpeech/train-clean-100
+    - /data/LibriSpeech/train-other-500
 
 val/build_dataset.folders:
   speech_libri_val:
-    - /scratch/datasets/LibriSpeech/dev-clean
-    - /scratch/datasets/LibriSpeech/dev-other
+    - /data/LibriSpeech/dev-clean
+    - /data/LibriSpeech/dev-other
 
 test/build_dataset.folders:
   speech_libri_test:
-    - /scratch/datasets/LibriSpeech/test-clean
-    - /scratch/datasets/LibriSpeech/test-other
+    - /data/LibriSpeech/test-clean
+    - /data/LibriSpeech/test-other
