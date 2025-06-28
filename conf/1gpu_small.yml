@@ -1,6 +1,3 @@
-$include:
-  - conf/base.yml
-
 batch_size: 6
 val_batch_size: 6
 num_workers: 4

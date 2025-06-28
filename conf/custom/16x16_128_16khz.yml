@@ -6,6 +6,9 @@ $include:
 DAC.n_codebooks: 16
 DAC.codebook_size: 256
 
+# Model
+DAC.latent_dim: 256
+
 train/build_dataset.folders:
   speech_libri:
     - /data/LibriSpeech/train-clean-360
