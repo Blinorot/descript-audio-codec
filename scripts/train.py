@@ -231,6 +231,15 @@ def val_loop(batch, state, accel):
     out = state.generator(signal.audio_data, signal.sample_rate)
     recons = AudioSignal(out["audio"], signal.sample_rate)
 
+    signal_data = signal.audio_data
+    recons_data = recons.audio_data
+
+    min_length = min(signal_data.shape[-1], recons_data.shape[-1])
+    signal_data = signal_data[..., :min_length]
+    recons_data = recons_data[..., :min_length]
+    signal.audio_data = signal_data
+    recons.audio_data = recons_data
+
     return {
         "loss": state.mel_loss(recons, signal),
         "mel/loss": state.mel_loss(recons, signal),
