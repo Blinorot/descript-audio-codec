@@ -1,0 +1,19 @@
+$include:
+  - conf/final/16khz.yml
+  - conf/1gpu_small.yml
+
+train/build_dataset.folders:
+  speech_libri:
+    - /data/LibriSpeech/train-clean-360
+    - /data/LibriSpeech/train-clean-100
+    - /data/LibriSpeech/train-other-500
+
+val/build_dataset.folders:
+  speech_libri_val:
+    - /data/LibriSpeech/dev-clean
+    - /data/LibriSpeech/dev-other
+
+test/build_dataset.folders:
+  speech_libri_test:
+    - /data/LibriSpeech/test-clean
+    - /data/LibriSpeech/test-other
