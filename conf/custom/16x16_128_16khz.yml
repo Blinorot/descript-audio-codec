@@ -1,6 +1,6 @@
 $include:
   - conf/final/16khz.yml
-  - conf/1gpu_small.yml
+  - conf/1gpu.yml
 
 # Quantization
 DAC.n_codebooks: 16
@@ -8,6 +8,10 @@ DAC.codebook_size: 256
 
 # Model
 DAC.latent_dim: 256
+
+# iters
+num_iters: 250000
+save_iters: [10000, 50000, 100000, 150000, 200000]
 
 train/build_dataset.folders:
   speech_libri:
