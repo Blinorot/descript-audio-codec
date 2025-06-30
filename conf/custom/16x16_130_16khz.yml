@@ -1,0 +1,30 @@
+$include:
+  - conf/final/16khz.yml
+  - conf/1gpu.yml
+
+# Quantization
+DAC.n_codebooks: 13
+DAC.codebook_size: 1024
+
+# Model
+DAC.latent_dim: 256
+
+# iters
+num_iters: 250000
+save_iters: [10000, 50000, 100000, 150000, 200000]
+
+train/build_dataset.folders:
+  speech_libri:
+    - /data/LibriSpeech/train-clean-360
+    - /data/LibriSpeech/train-clean-100
+    - /data/LibriSpeech/train-other-500
+
+val/build_dataset.folders:
+  speech_libri_val:
+    - /data/LibriSpeech/dev-clean
+    - /data/LibriSpeech/dev-other
+
+test/build_dataset.folders:
+  speech_libri_test:
+    - /data/LibriSpeech/test-clean
+    - /data/LibriSpeech/test-other
